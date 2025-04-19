@@ -10,7 +10,7 @@ export default defineConfig({
         }),
         react(),
     ],
-    base: '/posting-map-test/build/assets',
+    base: '/build/assets',
     build: {
         outDir: 'public/build/assets',
         manifest: true,
