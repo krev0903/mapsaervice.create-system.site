@@ -10,7 +10,7 @@ export default defineConfig({
         }),
         react(),
     ],
-    base: '/mapsaervice.create-system.site/public/build/assets',
+    base: '/mapsaervice.create-system.site/posting-map-test/build/assets',
     build: {
         outDir: 'public/build/assets',
         manifest: true,
