@@ -10,7 +10,7 @@ export default defineConfig({
         }),
         react(),
     ],
-    base: '/build/assets/', // ← assetsまで含める！
+    base: '/mapsaervice.create-system.site/posting-map-test/build/assets',
     build: {
         outDir: '../build/assets',
         manifest: true,
