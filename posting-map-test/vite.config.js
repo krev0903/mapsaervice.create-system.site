@@ -12,7 +12,7 @@ export default defineConfig({
     ],
     base: '/mapsaervice.create-system.site/posting-map-test/build/assets',
     build: {
-        outDir: 'public/build/assets',
+        outDir: '../build/assets',
         manifest: true,
         rollupOptions: {
             input: 'resources/js/app.jsx',
