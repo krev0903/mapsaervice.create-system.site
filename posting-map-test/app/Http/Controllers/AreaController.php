@@ -9,11 +9,9 @@ use Inertia\Inertia;
 
 class AreaController extends Controller
 {
-    public function getPrice(Request $request)
+    public function index(Request $request)
     {
-        // 修正：エリア名の前後の空白を削除
         $areaName = trim($request->input('Areas'));
-        \Log::info("受け取ったエリア名: " . $areaName);
 
         // エリア名を使ってデータベースを検索
         $areaPrice = Area::where('area_name', $areaName)->first();
@@ -24,5 +22,11 @@ class AreaController extends Controller
             \Log::error("エリア名が見つかりませんでした: " . $areaName);
             return response()->json(['error' => '指定されたエリア名は存在しません'], 404);
         }
+    }
+
+    public function edit ()
+    {
+        $areas = Area::all();
+        return inertia::render();
     }
 }
