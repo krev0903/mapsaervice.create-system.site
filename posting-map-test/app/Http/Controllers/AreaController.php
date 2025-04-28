@@ -27,6 +27,8 @@ class AreaController extends Controller
     public function edit ()
     {
         $areas = Area::all();
-        return inertia::render();
+        return inertia::render('Components/Area/AreasEdit',[
+            'areas' => $areas
+        ]);
     }
 }

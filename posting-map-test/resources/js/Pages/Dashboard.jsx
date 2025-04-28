@@ -38,7 +38,7 @@ export default function Dashboard(props) {
                                     ))}
                                 </ul>
                             ) : (
-                                <p>No orders found.</p>
+                                <p>注文履歴がありません</p>
                             )}
                         </div>
                     </div>
