@@ -12,8 +12,8 @@ export default function Header() {
             ポスティングエリアを選択して下さい
           </h2>
         }
-      >    
-        <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
+      >  
+        {/* <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
           <header className="grid grid-cols-2 items-center gap-2 py-5 lg:grid-cols-3 bg-gray-300">
             <div className="flex lg:col-start-2 lg:justify-center">
               <div className=''>
@@ -55,7 +55,34 @@ export default function Header() {
           </header>
         </div>
       </AuthenticatedLayout>
-      <Head title="Welcome" />
+      ):( 
+      <AuthenticatedLayout>
+                <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
+          <header className="grid grid-cols-2 items-center gap-2 py-5 lg:grid-cols-3 bg-gray-300">
+            <div className="flex lg:col-start-2 lg:justify-center">
+              <div className=''>
+              </div>
+            </div>
+            <nav className="-mx-3 flex flex-1 justify-end">
+                <>
+                  <Link
+                    href={route('login')}
+                    className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                  >
+                    ログイン
+                  </Link>
+                  <Link
+                    href={route('register')}
+                    className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                  >
+                    登録
+                  </Link>
+                </>
+              
+            </nav>
+          </header>
+        </div> */}
+      </AuthenticatedLayout>
     </>
   );
 }

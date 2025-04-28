@@ -1,0 +1,1 @@
+import{j as r}from"./app-BWIgDFS5.js";import t from"./Sidebar-C0SwvEmn.js";import e from"./Header-BdBts1De.js";import"./Map-DX7d-NnG.js";import"./index-CbVrA3ol.js";function d({auth:a}){return r.jsx(r.Fragment,{children:r.jsxs("div",{className:"bg-gray-50 text-black/50 dark:bg-black dark:text-white/50",children:[r.jsx(e,{}),r.jsx(t,{})]})})}export{d as default};

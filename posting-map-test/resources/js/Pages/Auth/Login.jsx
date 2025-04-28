@@ -75,7 +75,7 @@ export default function Login({ status, canResetPassword }) {
                             }
                         />
                         <span className="ms-2 text-sm text-gray-600">
-                            パスワードを記憶する
+                             ログイン状態を保持
                         </span>
                     </label>
                 </div>

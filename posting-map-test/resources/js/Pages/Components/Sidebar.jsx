@@ -8,6 +8,14 @@ const Sidebar = () => {
   const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   
+  useEffect(() => {
+    let newTotalPrice = 0;
+    selectedAreas.forEach((areaName) => {
+      newTotalPrice += areaPrices[areaName] || 0;
+    });
+    setTotalPrice(newTotalPrice);
+  }, [selectedAreas, areaPrices]);
+  
   // 合計金額の再計算
   useEffect(() => {
     let newTotalPrice = 0;
@@ -20,7 +28,7 @@ const Sidebar = () => {
   // 市区町村に対応する金額を取得
   const fetchAreaPrice = (AreasName) => {
     console.log('送信するエリア名:', AreasName);  // エリア名が正しく送信されているか確認
-    fetch(`${baseUrl}/`, {
+    fetch(`${baseUrl}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -45,7 +53,8 @@ const Sidebar = () => {
     })
     .catch((error) => {
       console.error('Error:', error);
-      alert('金額取得に失敗しました。もう一度試してください。');
+      alert('金額取得に失敗したのでリロードします。お手数ですが再選択をお願いします。');
+      window.location.reload();//失敗した時にリロード
     });
   };
 
