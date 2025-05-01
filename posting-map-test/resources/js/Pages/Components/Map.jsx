@@ -41,9 +41,9 @@ const Map = ({ selectedAreas, setSelectedAreas, fetchAreaPrice, areaPrices, tota
     const isSelected = selectedAreas.has(AreasName); // 選択状態の判定
 
     return {
-      fillColor: isSelected ? 'green' : 'red', // 緑色で選択されたエリア、赤色で選択されていないエリア
+      fillColor: isSelected ? 'green' : 'tomato', // 緑色で選択されたエリア、赤色で選択されていないエリア
       fillOpacity: 0.5,
-      color: 'black',
+      color: 'rgba(10, 10, 10, 0.3)',
       weight: 1,
       transition: 'fill-color 5s ease, fill-opacity 5s ease', // fillColorとfillOpacityのトランジションを5秒に設定
     };

@@ -8,6 +8,14 @@ const Sidebar = () => {
   const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   
+  useEffect(() => {
+    let newTotalPrice = 0;
+    selectedAreas.forEach((areaName) => {
+      newTotalPrice += areaPrices[areaName] || 0;
+    });
+    setTotalPrice(newTotalPrice);
+  }, [selectedAreas, areaPrices]);
+  
   // 合計金額の再計算
   useEffect(() => {
     let newTotalPrice = 0;
@@ -20,7 +28,7 @@ const Sidebar = () => {
   // 市区町村に対応する金額を取得
   const fetchAreaPrice = (AreasName) => {
     console.log('送信するエリア名:', AreasName);  // エリア名が正しく送信されているか確認
-    fetch(`${baseUrl}/`, {
+    fetch(`${baseUrl}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -45,7 +53,8 @@ const Sidebar = () => {
     })
     .catch((error) => {
       console.error('Error:', error);
-      alert('金額取得に失敗しました。もう一度試してください。');
+      alert('金額取得に失敗したのでリロードします。お手数ですが再選択をお願いします。');
+      window.location.reload();//失敗した時にリロード
     });
   };
 
@@ -78,11 +87,11 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="h-screen flex overflow-hidden bg-gray-100">
+    <div className="h-[500px] flex overflow-hidden bg-gray-100">
       {/* サイドバー */}
-      <div className="w-[160px] bg-gray-800 text-white p-4">
+      <div className="w-[25%] bg-gray-700 text-white p-1 sm:p-4 sm:w-[200px]">
         <div className="flex items-center justify-center h-5">
-          <h1 className="text-2xl font-bold">選択エリア</h1>
+          <h1 className="text-[0.9rem] sm:text-[1.5rem] font-bold">選択エリア</h1>
         </div>
 
         {selectedAreas.size > 0 && (
@@ -90,8 +99,8 @@ const Sidebar = () => {
             <ul className="mt-[10px]">
               {Array.from(selectedAreas).map((areaName) => (
                 <li key={areaName} className="bg-teal-600 px-1 py-0 rounded-lg">
-                  <div className="font-semibold text-lg">{areaName}</div>
-                  <div className="text-xl mb-2">
+                  <div className="text-[0.8rem] sm:text-[1rem] font-semibold text-lg">{areaName}</div>
+                  <div className="text-[0.8rem] sm:text-[1rem] mb-2">
                     ¥{areaPrices[areaName]?.toLocaleString()}
                   </div>
                   {/* <button 
@@ -102,7 +111,7 @@ const Sidebar = () => {
                 </li>
               ))}
             </ul>
-            <p className="text-xl font-bold mt-2">合計: ¥{totalPrice.toLocaleString()}</p>
+            <p className="text-[0.8rem] sm:text-[1rem] font-bold mt-2">合計: ¥{totalPrice.toLocaleString()}</p>
 
             {/* 送信ボタン */}
             <form method="POST" action="${baseUrl}/order" className="mt-4">
@@ -111,7 +120,7 @@ const Sidebar = () => {
               <input type="hidden" name="areas" value={JSON.stringify(Array.from(selectedAreas))} />
               <button 
                 type="submit" 
-                className="bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition duration-200 w-full mt-2">
+                className="bg-teal-600 text-white px-2 py-3 rounded-lg hover:bg-teal-700 transition duration-200 w-full mt-2 sm:px-6">
                 送信
               </button>
             </form>
