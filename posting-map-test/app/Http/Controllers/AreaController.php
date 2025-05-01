@@ -28,7 +28,8 @@ class AreaController extends Controller
     {
         $areas = Area::all();
         return inertia::render('Components/Area/AreasEdit',[
-            'areas' => $areas
+            'areas' => $areas,
+            'pageTitle' => 'エリア編集'
         ]);
     }
 }

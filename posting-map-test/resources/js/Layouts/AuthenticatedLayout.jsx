@@ -31,6 +31,25 @@ export default function AuthenticatedLayout({ header, children }) {
                   >
                     マイページ
                   </NavLink>
+                  <NavLink
+                    href={route('areas_edit')}
+                    active={route().current('areas_edit')}
+                  >
+                    エリア編集
+                  </NavLink>
+                  <NavLink
+                    href={route('profile.edit')}
+                    active={route().current('profile.edit')}
+                  >
+                    アカウント設定
+                  </NavLink>
+                  <NavLink
+                    href={route('logout')}
+                    method="post"
+                    as="button"
+                >
+                    ログアウト
+                  </NavLink>
                 </div>
               ):(
                 <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -84,15 +103,15 @@ export default function AuthenticatedLayout({ header, children }) {
                     >
                       エリア編集
                     </Dropdown.Link>
+                    <Dropdown.Link href={route('profile.edit')}>
+                      アカウント設定
+                    </Dropdown.Link>
                     <Dropdown.Link
                       href={route('logout')}
                       method="post"
                       as="button"
                     >
                       ログアウト
-                    </Dropdown.Link>
-                    <Dropdown.Link href={route('profile.edit')}>
-                      アカウント設定
                     </Dropdown.Link>
                   </Dropdown.Content>
                   ):(

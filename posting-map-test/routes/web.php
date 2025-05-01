@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/order',[OrderController::class, 'store'])->middleware('auth')->name('order');
 });
 
-Route::get('/', function (){return Inertia::render('Welcome');});
+Route::get('/', function (){return Inertia::render('Welcome',['pageTitle' => 'ポスティングエリアを選択して下さい',]);});
 // Route::get('/areas_edit',function (){return Inertia::render('Components/Area/AreasEdit');});
 // Route::middleware(['auth'])->get('/dashboard', [UserController::class, 'index'])->name('dashboard');
 
