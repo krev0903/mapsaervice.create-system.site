@@ -55,7 +55,7 @@ export default function AuthenticatedLayout({ header, children }) {
                 <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                 <NavLink
                         href={route('login')}
-                        className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                        className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
                       >
                         ログイン
                 </NavLink>
@@ -93,13 +93,13 @@ export default function AuthenticatedLayout({ header, children }) {
                   <Dropdown.Content>
                     <Dropdown.Link
                       href={route('dashboard')}
-                      className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                      className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
                     >
                       マイページ
                     </Dropdown.Link>
                     <Dropdown.Link
                       href={route('areas_edit')}
-                      className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                      className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
                     >
                       エリア編集
                     </Dropdown.Link>
@@ -118,13 +118,13 @@ export default function AuthenticatedLayout({ header, children }) {
                     <Dropdown.Content>                    
                       <Dropdown.Link
                         href={route('login')}
-                        className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                        className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
                       >
                         ログイン
                       </Dropdown.Link>
                       <Dropdown.Link
                         href={route('register')}
-                        className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                        className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
                       >
                         登録
                       </Dropdown.Link>
@@ -192,16 +192,16 @@ export default function AuthenticatedLayout({ header, children }) {
               </div>
             </div>
             {auth?.user ?(
-              <div className="mt-3 space-y-1">
+              <div className="z-10 mt-3 space-y-1">
                 <ResponsiveNavLink
                   href={route('dashboard')}
-                  className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                  className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
                 >
                   マイページ
                 </ResponsiveNavLink>
                 <ResponsiveNavLink
                   href={route('areas_edit')}
-                  className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                  className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
                 >
                   エリア編集
                 </ResponsiveNavLink>
@@ -220,13 +220,13 @@ export default function AuthenticatedLayout({ header, children }) {
               <>
               <ResponsiveNavLink
               href={route('login')}
-              className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+              className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
             >
               ログイン
             </ResponsiveNavLink>
             <ResponsiveNavLink
               href={route('register')}
-              className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+              className="mr-[20px] rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
             >
               登録
             </ResponsiveNavLink>

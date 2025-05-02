@@ -21,7 +21,6 @@
     # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
-    # RewriteRule ^(.*)$ public/$1 [L]
+    RewriteRule ^ posting-map-test/public/index.php [L]
 </IfModule>
 

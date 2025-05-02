@@ -17,28 +17,40 @@ export default function Dashboard(props) {
                 <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                     <div className="p-6 text-gray-900">
                         <p>
-                            {props.name}
-                            さんのページ
+                            {props.name} さんのページ
                         </p>
 
                         {/* 注文履歴の表示 */}
-                        <div className="mt-4">
-                            <h3 className="text-lg font-semibold">注文履歴:</h3>
+                        <div className="mt-8">
+                            <h3 className="text-2xl font-semibold text-gray-800 mb-4">注文履歴</h3>
                             {props.orders.length > 0 ? (
-                                <ul>
+                                <div className="space-y-4">
                                     {props.orders.map((order) => (
-                                        <li key={order.id} className="text-gray-700">
-                                            <div>
-                                                <p>注文番号: {order.id}</p>
-                                                <p>注文金額: ¥{order.total_price}</p>
-                                                {/* created_at の表示 */}
-                                                <p className="mb-4">注文日: {new Date(order.created_at).toLocaleString()}</p>
+                                        <div
+                                            key={order.id}
+                                            className="p-4 bg-gray-50 rounded-lg shadow-md border border-gray-200 sm:w-[300px]"
+                                        >
+                                            <div className="flex justify-between items-center mb-3">
+                                                <p className="text-lg font-medium text-gray-700">
+                                                    注文番号: {order.id}
+                                                </p>
+                                                <p className="text-lg font-medium text-indigo-600">
+                                                    <div>
+                                                        注文金額
+                                                    </div>
+                                                    <div>
+                                                        ¥{order.total_price}
+                                                    </div>
+                                                </p>
                                             </div>
-                                        </li>
+                                            <p className="text-sm text-gray-500">
+                                                注文日: {new Date(order.created_at).toLocaleString()}
+                                            </p>
+                                        </div>
                                     ))}
-                                </ul>
+                                </div>
                             ) : (
-                                <p>注文履歴がありません</p>
+                                <p className="text-gray-600">注文履歴がありません</p>
                             )}
                         </div>
                     </div>

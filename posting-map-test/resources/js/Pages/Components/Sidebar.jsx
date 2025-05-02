@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Map from './Map';
+import { usePage, router } from '@inertiajs/react';
 
 const Sidebar = () => {
+  const user = usePage().props.auth.user;
+  const { auth } = usePage().props;
   const [selectedAreas, setSelectedAreas] = useState(new Set());
   const [areaPrices, setAreaPrices] = useState({}); // 市区町村ごとの金額
   const [totalPrice, setTotalPrice] = useState(0); // 合計金額
@@ -27,7 +30,6 @@ const Sidebar = () => {
 
   // 市区町村に対応する金額を取得
   const fetchAreaPrice = (AreasName) => {
-    console.log('送信するエリア名:', AreasName);  // エリア名が正しく送信されているか確認
     fetch(`${baseUrl}`, {
       method: 'POST',
       headers: {
@@ -35,7 +37,7 @@ const Sidebar = () => {
         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
       },
       body: JSON.stringify({
-        Areas: AreasName,  // 送信されるエリア名
+        Areas: AreasName,
       }),
     })
     .then((response) => {
@@ -53,8 +55,13 @@ const Sidebar = () => {
     })
     .catch((error) => {
       console.error('Error:', error);
-      alert('金額取得に失敗したのでリロードします。お手数ですが再選択をお願いします。');
-      window.location.reload();//失敗した時にリロード
+      if (auth?.user) {
+        alert('金額取得に失敗したのでリロードします。お手数ですが再選択をお願いします。');
+        window.location.reload();
+      } else {
+        alert('ログインしてください');
+        router.get(route('login'));  // Inertia.js を使ってログインページにリダイレクト
+      }
     });
   };
 
@@ -91,23 +98,27 @@ const Sidebar = () => {
       {/* サイドバー */}
       <div className="w-[25%] bg-gray-700 text-white p-1 sm:p-4 sm:w-[200px]">
         <div className="flex items-center justify-center h-5">
-          <h1 className="text-[0.9rem] sm:text-[1.5rem] font-bold">選択エリア</h1>
+          <h1 className="text-[0.8rem] sm:text-[1.5rem] font-bold">
+            選択エリア
+          </h1>
         </div>
 
         {selectedAreas.size > 0 && (
           <div>
-            <ul className="mt-[10px]">
+            <ul className="mt-[10px] overflow-y-auto max-h-[350px]"> {/* スクロール可能なリスト */}
               {Array.from(selectedAreas).map((areaName) => (
                 <li key={areaName} className="bg-teal-600 px-1 py-0 rounded-lg">
-                  <div className="text-[0.8rem] sm:text-[1rem] font-semibold text-lg">{areaName}</div>
-                  <div className="text-[0.8rem] sm:text-[1rem] mb-2">
-                    ¥{areaPrices[areaName]?.toLocaleString()}
+                  <div className="font-semibold text-lg text-[0.6rem] sm:text-[1rem]">
+                    {areaName}
                   </div>
-                  {/* <button 
-                    onClick={() => handleRemoveArea(areaName)} 
-                    className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-200">
-                    削除
-                  </button> */}
+                  <div className="mb-1 flex items-center justify-between text-[0.7rem] sm:text-[1rem] sm:mb-2">
+                    <span>¥{areaPrices[areaName]?.toLocaleString()}</span>
+                    <button 
+                      onClick={() => handleRemoveArea(areaName)} 
+                      className="bg-red-500 text-white px-[1px] rounded-lg hover:bg-red-600 transition duration-200">
+                      ✕
+                    </button>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -120,7 +131,7 @@ const Sidebar = () => {
               <input type="hidden" name="areas" value={JSON.stringify(Array.from(selectedAreas))} />
               <button 
                 type="submit" 
-                className="bg-teal-600 text-white px-2 py-3 rounded-lg hover:bg-teal-700 transition duration-200 w-full mt-2 sm:px-6">
+                className="bg-teal-600 text-white px-2 py-2 rounded-lg hover:bg-teal-700 transition duration-200 w-full mt-2 sm:px-6">
                 送信
               </button>
             </form>
