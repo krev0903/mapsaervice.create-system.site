@@ -17,7 +17,7 @@ export default function Header() {
   return (
     <AuthenticatedLayout
       header={
-        <h2 className="mx-2 text-[1.5rem] whitespace-nowrap font-bold sm:mx-10 sm:text-[2rem]">
+        <h2 className="mx-1 text-[1.5rem] whitespace-nowrap font-bold sm:mx-10 sm:text-[2rem]">
           {pageTitle}
         </h2>
       }

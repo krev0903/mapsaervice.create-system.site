@@ -50,7 +50,7 @@ const Map = ({ selectedAreas, setSelectedAreas, fetchAreaPrice, areaPrices, tota
   };
 
   return (
-    <MapContainer center={position} zoom={12} style={{ height: '500px', width: '100%' }}>
+    <MapContainer center={position} zoom={12} style={{ height: '500px', width: '100%' , zIndex: 1 }}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {geoData && <GeoJSON data={geoData} onEachFeature={onEachFeature} style={styleFeature} />}
     </MapContainer>
